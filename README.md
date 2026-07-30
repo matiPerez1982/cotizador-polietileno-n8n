@@ -45,10 +45,11 @@ De acuerdo con las especificaciones y normativas de la entrega final:
 5. Outputs (Ejemplo de Ejecución Real):
 * Registro creado en Airtable (ID de Registro: recPCRLJmrx6gZpRT, Estado: Aprobado).
 * Correo electrónico de confirmación despachado por Gmail (Message ID: 19fb118a65ab8a35).
+*(Verificado en screenshots.pdf - pantallas de Airtable y Gmail).*
 
 6. Límites y Manejo de Errores (Error Handling & Rules):
-* Si falta un dato obligatorio o falla la llamada a la API de OpenAI/Airtable, el flujo secundario Error Trigger atrapa la excepción globalmente y ejecuta Gmail Error Alert, notificando inmediatamente al equipo técnico con el ID de ejecución. (Evidencia del flujo de fallos detallada en diagrama_de_flujo.pdf y screenshots.pdf).
-
+* Si falta un dato obligatorio o falla la llamada a la API de OpenAI/Airtable, el flujo secundario Error Trigger atrapa la excepción globalmente y ejecuta Gmail Error Alert, notificando inmediatamente al responsable de operaciones con el ID de ejecución. (Evidencia del flujo de fallos detallada en diagrama_de_flujo.pdf y screenshots.pdf).
+  
 7. **Resultado Esperado / Impacto:**  
    * Reducción del 95% en el tiempo de procesamiento de cotizaciones.
    * Eliminación de errores de tipeo manuales.
