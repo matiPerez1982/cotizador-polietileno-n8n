@@ -61,4 +61,11 @@ De acuerdo con las especificaciones y normativas de la entrega final:
 * **Control de Errores:** Error Trigger + Alertas Automatizadas
 
 ---
+
+## 📊 8. Enlaces de Acceso Público
+
+- **Dashboard de Control y Base de Datos (Shared View):** [Ver en Airtable](https://airtable.com/appqUAYkJzmn8N1Nr/shrjSUZI9ekxbMN7b)
+- **Repositorio Oficial:** [Ver en GitHub](https://github.com/matiPerez1982/cotizador-polietileno-n8n)
+
+---
 *Desarrollado para el Proyecto Final del Curso de Automatización e IA.*
