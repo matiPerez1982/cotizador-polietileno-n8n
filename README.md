@@ -36,20 +36,18 @@ De acuerdo con las especificaciones y normativas de la entrega final:
    * **Paso 5 (Base de Datos):** `Create a record` escribe el resultado en Airtable.
    * **Paso 6 (Multicanalidad):** `Send a message (Gmail)` envía la cotización final confirmada al correo del cliente.
 
-4. 4. **Mecanismo Human-in-the-Loop (HITL):**
-   * El flujo ejecuta un nodo de pausa `Wait` antes de la salida crítica.
-   * **Validación:** El supervisor revisa el borrador de la cotización (Cliente, Producto, Volumen, Micrones, Precio Estimado).
-   * **Rama Aprobado:** Se actualiza el estado en Airtable a `Aprobado` y se despacha automáticamente el correo al cliente vía Gmail[cite: 1].
-   * **Rama Rechazado:** Se registra en Airtable con estado `Requiere revisión` y se envía una notificación interna para ajuste manual.
-   *(Evidencia visual documentada en el archivo `screenshots.pdf`).*
+4. Mecanismo Human-in-the-Loop (HITL):
+* El flujo ejecuta un nodo de pausa Wait antes de la salida crítica.
+* Validación: El supervisor revisa el borrador de la cotización (Cliente, Producto, Volumen, Micrones, Precio Estimado).
+* Rama Aprobado: Se actualiza el estado en Airtable a "Aprobado" y se despacha automáticamente el correo al cliente vía Gmail.
+* Rama Rechazado: Se registra en Airtable con estado "Requiere revisión" y se envía una notificación interna para ajuste manual. (Evidencia visual documentada en el archivo screenshots.pdf).
 
-5. **Outputs:**  
-   * Registro creado en Airtable (ID: `recPCRLJmrx6gZpRT`, Estado, Detalle).
-   * Correo electrónico de confirmación despachado por Gmail (Message ID: `19fb118a65ab8a35`).
+5. Outputs (Ejemplo de Ejecución Real):
+* Registro creado en Airtable (ID de Registro: recPCRLJmrx6gZpRT, Estado: Aprobado).
+* Correo electrónico de confirmación despachado por Gmail (Message ID: 19fb118a65ab8a35).
 
-6. **Límites y Manejo de Errores (Error Handling & Rules):**
-   * Si falta un dato obligatorio o falla la llamada a la API de OpenAI/Airtable, el flujo secundario `Error Trigger` atrapa la excepción globalmente y ejecuta `Gmail Error Alert`, notificando inmediatamente al equipo técnico con el ID de ejecución[cite: 1].
-   *(Evidencia del flujo de fallos detallada en `diagrama_de_flujo.pdf`[cite: 1] y `screenshots.pdf`).*
+6. Límites y Manejo de Errores (Error Handling & Rules):
+* Si falta un dato obligatorio o falla la llamada a la API de OpenAI/Airtable, el flujo secundario Error Trigger atrapa la excepción globalmente y ejecuta Gmail Error Alert, notificando inmediatamente al equipo técnico con el ID de ejecución. (Evidencia del flujo de fallos detallada en diagrama_de_flujo.pdf y screenshots.pdf).
 
 7. **Resultado Esperado / Impacto:**  
    * Reducción del 95% en el tiempo de procesamiento de cotizaciones.
