@@ -30,7 +30,7 @@ De acuerdo con las especificaciones y normativas de la entrega final:
 
 3. **Agente(s) / Pasos (en orden):**  
    * **Paso 1 (Trigger):** Webhook captura la petición.
-   * **Paso 2 (IA Agent - Google Gemini): El nodo de Google Gemini (modelo `models/gemini-pro-latest`) evalúa el texto, especificaciones de micrones y volumen, y genera la cotización personalizada en formato estructurado.
+   * **Paso 2 (IA Agent - Google Gemini): El nodo de Google Gemini (modelo `models/gemini-flash-latest`) evalúa el texto, especificaciones de micrones y volumen, y genera la cotización personalizada en formato estructurado.
    * **Paso 3 (Estructuración):** `Code in JavaScript` normaliza las variables del resultado.
    * **Paso 4 (Human in the Loop):** `Wait` pausa la ejecución solicitando la validación o revisión previa antes de impactar sistemas centrales.
    * **Paso 5 (Base de Datos):** `Create a record` escribe el resultado en Airtable.
@@ -60,7 +60,7 @@ De acuerdo con las especificaciones y normativas de la entrega final:
 ## 🛠️ Tecnologías Utilizadas
 
 * Orquestador: n8n Cloud
-* IA: Google Gemini API (`models/gemini-pro-latest` - Free Tier)
+* IA: Google Gemini API ( models/gemini-flash-latest )
 * Base de Datos: Airtable
 * Comunicaciones: Gmail API
 * Control de Errores: Error Trigger + Alertas Automatizadas
