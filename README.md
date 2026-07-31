@@ -51,7 +51,7 @@ Este repositorio contiene la solución completa de automatización para la gesti
 
 Puedes ver la demostración completa del funcionamiento del sistema (flujo en n8n, interacción con la IA, aprobación humana y envío de correos) en el siguiente enlace:
 
-🎥 [**Ver Video del Proyecto en Google Drive**](https://drive.google.com/file/d/1FBo74pHhKuJ39We8rpdERrUIuRLpqzPv/view?usp=sharing)
+🎥 [**Ver Video del Proyecto en Google Drive**](https://drive.google.com/file/d/1fsgpu6vPoumjDPj85vL0D4Xx7xOp7DHD/view?usp=sharing)
 
 ---
 *Desarrollado para el Proyecto Final del Curso de Automatización e IA.*
