@@ -12,6 +12,8 @@ El sistema integra inteligencia artificial para análisis dinámico de requerimi
 De acuerdo con las especificaciones y normativas de la entrega final:
 
 * 📄 **[Diagrama de Flujo (PDF)](./diagrama_de_flujo.pdf)**: Visualización técnica interactiva de la arquitectura del flujo n8n.
+## 📄 Documentación Técnica y Arquitectura  Puedes consultar el documento técnico completo con la arquitectura del flujo, el detalle de nodos (Triggers y Actions) y 
+      los esquemas JSON en el siguiente enlace: [Ver Documentación Técnica (PDF)](./DOCUMENTACION_TECNICA_N8N.pdf)
 * 📷 **[Documentación de Screenshots / Evidencias (PDF)](./screenshots.pdf)**: Capturas de pantalla verificadas de cada etapa y ejecuciones exitosas.
 * ⚙️ **`Cotizador_Polietileno_B2B.json`**: Archivo de exportación oficial del flujo ejecutable en n8n.
 * 📝 **`README.md`**: Especificaciones integrales del sistema (este documento).
