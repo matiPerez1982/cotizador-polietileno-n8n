@@ -71,8 +71,9 @@ De acuerdo con las especificaciones y normativas de la entrega final:
 ---
 
 ## 📊 8. Enlaces de Acceso Público
+- **Dashboard de Control y Base de Datos (Airtable Shared View): https://airtable.com/appqUAYkJzmn8N1Nr/shrjSUZI9ekxbMN7b (abre en incógnito sin pedir inicio de sesión)
+  <img width="1920" height="1043" alt="image" src="https://github.com/user-attachments/assets/61b9ed18-4ec0-4073-8021-10aad214c0f6" />
 
-- **Dashboard de Control y Base de Datos (Shared View):** [Ver en Airtable](https://airtable.com/appqUAYkJzmn8N1Nr/shrjSUZI9ekxbMN7b)
 - **Repositorio Oficial:** [Ver en GitHub](https://github.com/matiPerez1982/cotizador-polietileno-n8n)
 
 ---
