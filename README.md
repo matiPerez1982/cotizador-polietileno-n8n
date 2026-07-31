@@ -15,6 +15,7 @@ De acuerdo con las especificaciones y normativas de la entrega final:
 * 📷 **[Documentación de Screenshots / Evidencias (PDF)](./screenshots.pdf)**: Capturas de pantalla verificadas de cada etapa y ejecuciones exitosas.
 * ⚙️ **`Cotizador_Polietileno_B2B.json`**: Archivo de exportación oficial del flujo ejecutable en n8n.
 * 📝 **`README.md`**: Especificaciones integrales del sistema (este documento).
+* 📊 **Matriz de Decisión y Cuadro Comparativo de Modelos de IA:** [Ver MATRIZ_COSTOS_IA.pdf](./MATRIZ_COSTOS_IA.pdf)
 
 ---
 
