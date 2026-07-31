@@ -73,4 +73,12 @@ De acuerdo con las especificaciones y normativas de la entrega final:
 - **Repositorio Oficial:** [Ver en GitHub](https://github.com/matiPerez1982/cotizador-polietileno-n8n)
 
 ---
+
+## 📹 Video Demostrativo
+
+Puedes ver la demostración completa del funcionamiento del sistema (flujo en n8n, interacción con la IA, aprobación humana y envío de correos) en el siguiente enlace:
+
+🎥 [**Ver Video del Proyecto en Google Drive**](https://drive.google.com/file/d/1FBo74pHhKuJ39We8rpdERrUIuRLpqzPv/view?usp=sharing)
+
+---
 *Desarrollado para el Proyecto Final del Curso de Automatización e IA.*
