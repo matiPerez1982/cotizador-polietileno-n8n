@@ -1,0 +1,463 @@
+{
+  "name": "Cotizador_Polietileno_B2B",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "cotizacion-polietileno",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -1440,
+        -432
+      ],
+      "id": "885c8c8b-924e-40d1-af86-42c2af6c0439",
+      "name": "Webhook",
+      "webhookId": "2e2cc351-a772-485c-90a5-a332436af1c6"
+    },
+    {
+      "parameters": {
+        "jsCode": "const rawText = $input.first().json.content.parts[0].text;\nconst cleanText = rawText.replace(/```json/g, '').replace(/```/g, '').trim();\nconst parsedJson = JSON.parse(cleanText);\n\nreturn [\n  {\n    json: {\n      monto_estimado: parsedJson.monto_estimado,\n      cotizacion_texto: parsedJson.cotizacion_texto\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -560,
+        -528
+      ],
+      "id": "516d9b0d-6c29-452d-bece-88ba31ab3c07",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appqUAYkJzmn8N1Nr",
+          "mode": "list",
+          "cachedResultName": "Cotizador_Polietileno_B2B",
+          "cachedResultUrl": "https://airtable.com/appqUAYkJzmn8N1Nr"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblnu9zrGo68jMPOK",
+          "mode": "list",
+          "cachedResultName": "Cotizaciones",
+          "cachedResultUrl": "https://airtable.com/appqUAYkJzmn8N1Nr/tblnu9zrGo68jMPOK"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Cliente": "={{ $('Webhook').item.json.cliente }}",
+            "Detalle del Pedido": "={{ $('Webhook').item.json.mensaje }}",
+            "Estado": "Pendiente",
+            "Email": "={{ $('Webhook').first().json['email'] }}",
+            "Monto Estimado": "={{ $('Code in JavaScript').item.json.monto_estimado }}",
+            "Cotizacion IA": "={{ $('Code in JavaScript').item.json.cotizacion_texto }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Cliente",
+              "displayName": "Cliente",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Detalle del Pedido",
+              "displayName": "Detalle del Pedido",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Estado",
+              "displayName": "Estado",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Aprobado",
+                  "value": "Aprobado"
+                },
+                {
+                  "name": "Pendiente",
+                  "value": "Pendiente"
+                },
+                {
+                  "name": "Rechazado",
+                  "value": "Rechazado"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Cotizacion IA",
+              "displayName": "Cotizacion IA",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Monto Estimado",
+              "displayName": "Monto Estimado",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [
+        -176,
+        -528
+      ],
+      "id": "6b757505-daf5-495d-bb31-ad5e422ce82d",
+      "name": "Create a record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "uFVqgLdh8VrgEFq1",
+          "name": "Airtable account 2"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1328,
+        -128
+      ],
+      "id": "c0b3d197-634b-4305-b15d-596f3fa78e51",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "sendTo": "matiperez1982@gmail.com",
+        "subject": "⚠️ ALERTA: Se ha producido un error en la automatización",
+        "message": "Atención: Se ha activado el disparador de errores en la automatización. Por favor revisá el historial de ejecuciones en n8n para corregir la falla.",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        -1024,
+        -128
+      ],
+      "id": "2de022bf-65a2-45c9-a907-f62059de756c",
+      "name": "Send a message",
+      "webhookId": "bd491f6e-2a52-43e4-8814-b85c8e8fb8e5",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "IIER4XHAvqvlK6g2",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resume": "form",
+        "formTitle": "Aprobación de Cotización B2B",
+        "formDescription": "Por favor revise los datos de la cotización generada por IA antes de registrarla en el sistema.",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -368,
+        -528
+      ],
+      "id": "def79f56-2e66-44d9-b74c-a5450f7c25f1",
+      "name": "Wait",
+      "webhookId": "32393741-d50d-4a36-adc2-5349bb19a3ed"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.fields.Email }}",
+        "subject": "Cotización Confirmada - Polietileno B2B",
+        "message": "=Hola,   Nos comunicamos para enviarte la cotización correspondiente a tu solicitud:  Detalle: {{ $json.fields['Detalle del Pedido'] }} Estado: Confirmado y procesado.\n\n¡Muchas gracias por elegirnos!",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        48,
+        -528
+      ],
+      "id": "370b16ba-8180-4d0c-b400-34426f7dd99a",
+      "name": "Send a message1",
+      "webhookId": "561cba3c-1db6-4df6-be9c-0f944a8c5095",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "IIER4XHAvqvlK6g2",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "b9f96b2f-f5f8-4b15-ac84-e6a3f1b12ff9",
+              "leftValue": "={{ $json.mensaje }}",
+              "rightValue": "urgente",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -1136,
+        -432
+      ],
+      "id": "b1c0f755-5a13-4acd-a9e3-cd12caa13a27",
+      "name": "Evaluar Complejidad"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-flash-latest",
+          "mode": "list",
+          "cachedResultName": "models/gemini-flash-latest"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Actúa como un Ejecutivo de Ventas Senior B2B especializado en Polietileno.\n\nAnaliza la siguiente consulta recibida:\nCliente: {{ $json.cliente }}\nMensaje: {{ $json.mensaje }}\n\nGenera una respuesta en formato JSON estructurado estricto con las siguientes dos claves:\n1. \"monto_estimado\": un valor numérico estimado en dólares para este pedido (por ejemplo, 12500).\n2. \"cotizacion_texto\": una propuesta comercial formal y técnica detallando micrones, toneladas sugeridas, especificaciones y tiempos de entrega estimados.\n\nResponde ÚNICAMENTE con el objeto JSON válido, sin bloques de código markdown ni texto previo o posterior."
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        -896,
+        -320
+      ],
+      "id": "1dc03057-f833-4e97-8027-262750c8ac9d",
+      "name": "Gemini Flash",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "BL8G4IbSSrWSkitC",
+          "name": "Google Gemini(PaLM) Api account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-flash-latest",
+          "mode": "list",
+          "cachedResultName": "models/gemini-flash-latest"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Actúa como un Ejecutivo de Ventas Senior B2B especializado en Polietileno.\n\nAnaliza la siguiente consulta recibida:\nCliente: {{ $json.cliente }}\nMensaje: {{ $json.mensaje }}\n\nGenera una respuesta en formato JSON estructurado estricto con las siguientes dos claves:\n1. \"monto_estimado\": un valor numérico estimado en dólares para este pedido (por ejemplo, 12500).\n2. \"cotizacion_texto\": una propuesta comercial formal y técnica detallando micrones, toneladas sugeridas, especificaciones y tiempos de entrega estimados.\n\nResponde ÚNICAMENTE con el objeto JSON válido, sin bloques de código markdown ni texto previo o posterior."
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        -896,
+        -528
+      ],
+      "id": "7e534c09-ef07-4112-bb84-7b15498caa0f",
+      "name": "Gemini Pro",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "BL8G4IbSSrWSkitC",
+          "name": "Google Gemini(PaLM) Api account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "cliente": "Empresa Plásticos del Sur",
+          "email": "compras@plasticosdelsur.com",
+          "mensaje": "Hola, necesito cotizar 5 toneladas de rollo de polietileno cristal de 200 micrones y 1.5 metros de ancho. Urgente para la semana que viene."
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Evaluar Complejidad",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Create a record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a record": {
+      "main": [
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Evaluar Complejidad": {
+      "main": [
+        [
+          {
+            "node": "Gemini Pro",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Gemini Flash",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini Flash": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini Pro": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "f2de5988-1f24-4fba-979c-3683ac60ec03",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "00095b0650eb5d362a7d98ceb3457f69d233273de46468ad72789d353589321a"
+  },
+  "nodeGroups": [],
+  "id": "Phq4hpQajPpI0ahN",
+  "tags": []
+}
