@@ -30,7 +30,7 @@ De acuerdo con las especificaciones y normativas de la entrega final:
 
 3. **Agente(s) / Pasos (en orden):**  
    * **Paso 1 (Trigger):** Webhook captura la petición.
-   * **Paso 2 (IA Agent - OpenAI):** `Message a model` evalúa el texto, especificaciones de micrones y volumen, y genera la cotización personalizada.
+   * **Paso 2 (IA Agent - Google Gemini): El nodo de Google Gemini (modelo `models/gemini-pro-latest`) evalúa el texto, especificaciones de micrones y volumen, y genera la cotización personalizada en formato estructurado.
    * **Paso 3 (Estructuración):** `Code in JavaScript` normaliza las variables del resultado.
    * **Paso 4 (Human in the Loop):** `Wait` pausa la ejecución solicitando la validación o revisión previa antes de impactar sistemas centrales.
    * **Paso 5 (Base de Datos):** `Create a record` escribe el resultado en Airtable.
@@ -48,7 +48,7 @@ De acuerdo con las especificaciones y normativas de la entrega final:
 *(Verificado en screenshots.pdf - pantallas de Airtable y Gmail).*
 
 6. Límites y Manejo de Errores (Error Handling & Rules):
-* Si falta un dato obligatorio o falla la llamada a la API de OpenAI/Airtable, el flujo secundario Error Trigger atrapa la excepción globalmente y ejecuta Gmail Error Alert, notificando inmediatamente al responsable de operaciones con el ID de ejecución. (Evidencia del flujo de fallos detallada en diagrama_de_flujo.pdf y verificado en screenshots.pdf).
+* Si falta un dato obligatorio o falla la llamada a la API de Gemini/Airtable, el flujo secundario Error Trigger atrapa la excepción globalmente y ejecuta Gmail Error Alert, notificando inmediatamente al responsable de operaciones con el ID de ejecución. (Evidencia del flujo de fallos detallada en diagrama_de_flujo.pdf y verificado en screenshots.pdf).
   
 7. **Resultado Esperado / Impacto:**  
    * Reducción del 95% en el tiempo de procesamiento de cotizaciones.
@@ -58,11 +58,12 @@ De acuerdo con las especificaciones y normativas de la entrega final:
 ---
 
 ## 🛠️ Tecnologías Utilizadas
-* **Orquestador:** n8n Cloud
-* **IA:** OpenAI GPT-4o
-* **Base de Datos:** Airtable
-* **Comunicaciones:** Gmail API
-* **Control de Errores:** Error Trigger + Alertas Automatizadas
+
+* Orquestador: n8n Cloud
+* IA: Google Gemini API (`models/gemini-pro-latest` - Free Tier)
+* Base de Datos: Airtable
+* Comunicaciones: Gmail API
+* Control de Errores: Error Trigger + Alertas Automatizadas
 
 ---
 
