@@ -44,23 +44,8 @@ Este repositorio contiene la solución completa de automatización para la gesti
 
 ## 📊 Enlaces de Acceso Público
 
-* **Dashboard de Control (Airtable):** [Ver Dashboard](https://airtable.com/appqUAYkJzmn8N1Nr/shrWVY9Fyl4qjpWa8)
-* **Base de Datos (Airtable):** [Ver Base de Datos](https://airtable.com/appqUAYkJzmn8N1Nr/shrjSUZI9ekxbMN7b)
-
-## 📹 Video Demostrativo
-
-🎥 [Enlace al video de Loom/Drive - Pendiente de agregar]
-
-## 📊 8. Enlaces de Acceso Público
-  - **Dashboard de Control (Airtable Shared View): https://airtable.com/appqUAYkJzmn8N1Nr/shrWVY9Fyl4qjpWa8
-  <img width="1915" height="1008" alt="image" src="https://github.com/user-attachments/assets/2909b323-142b-4651-aef4-d32c920c2c2c" />
-
-  Base de Datos / Tabla (Airtable): https://airtable.com/appqUAYkJzmn8N1Nr/shrjSUZI9ekxbMN7b (si abre en incógnito sin login)
-   <img width="1920" height="1043" alt="image" src="https://github.com/user-attachments/assets/61b9ed18-4ec0-4073-8021-10aad214c0f6" />
-
-- **Repositorio Oficial:** [Ver en GitHub](https://github.com/matiPerez1982/cotizador-polietileno-n8n)
-
----
+* **Dashboard de Control (Airtable) (si abre en incógnito sin login):** [Ver Dashboard](https://airtable.com/appqUAYkJzmn8N1Nr/shrWVY9Fyl4qjpWa8)
+* **Base de Datos (Airtable) (si abre en incógnito sin login):** [Ver Base de Datos](https://airtable.com/appqUAYkJzmn8N1Nr/shrjSUZI9ekxbMN7b)
 
 ## 📹 Video Demostrativo
 
